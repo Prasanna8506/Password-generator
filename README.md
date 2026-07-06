@@ -36,7 +36,7 @@ To launch the app and run a quick test on your local machine
 --- 
 
 ## Project File Structure 
-```
+```bash
 ├── static/
 │   └── style.css       # Contains the neon dark theme & glassmorphism layout
 ├── templates/
@@ -46,6 +46,6 @@ To launch the app and run a quick test on your local machine
 ├── README.md           # Documentation file
 └── requirements.txt    # Lists all essential Python library dependencies
 
+---
 
-## Author
-* **Prasanna Kulkarni** 
+
