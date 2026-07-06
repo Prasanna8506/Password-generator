@@ -1,0 +1,259 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+body {
+    background-color: #0f172a;
+    /* Trendy dual gradient background mesh */
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.15) 0px, transparent 50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Glassmorphism Container Card */
+.container {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 35px;
+    width: 100%;
+    max-width: 450px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 
+                0 0 50px rgba(168, 85, 247, 0.05);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 8px;
+    color: #f8fafc;
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #94a3b8;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+h3 {
+    color: #cbd5e1;
+    font-size: 13px;
+    margin-top: 25px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* Form Inputs */
+.input-group label {
+    display: block;
+    font-weight: 500;
+    color: #cbd5e1;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+input[type=number] {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    font-size: 16px;
+    color: #f8fafc;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input[type=number]:focus {
+    border-color: #a855f7;
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.2);
+    background: rgba(15, 23, 42, 0.9);
+}
+
+/* Checkbox Alignment & Styling */
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    color: #94a3b8;
+    transition: color 0.2s ease;
+}
+
+.checkbox:hover {
+    color: #f8fafc;
+}
+
+.checkbox input {
+    appearance: none; /* Reset native styling */
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+    transition: all 0.2s ease;
+}
+
+.checkbox input::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    background-color: #f8fafc;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.checkbox input:checked {
+    background: #a855f7;
+    border-color: #c084fc;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
+}
+
+.checkbox input:checked::before {
+    transform: scale(1);
+}
+
+/* Global Button Properties */
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.generate-btn {
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    margin-top: 30px;
+    box-shadow: 0 4px 15px rgba(168, 85, 247, 0.25);
+}
+
+.generate-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(168, 85, 247, 0.4);
+    filter: brightness(1.1);
+}
+
+.generate-btn:active {
+    transform: translateY(1px);
+}
+
+/* Password Output Display Box */
+.password-box {
+    display: flex;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    transition: border-color 0.3s ease;
+}
+
+.password-box:focus-within {
+    border-color: #34d399;
+}
+
+.password-box input {
+    flex: 1;
+    padding: 14px;
+    font-size: 16px;
+    border: none;
+    background: transparent;
+    outline: none;
+    color: #34d399; /* Green hue for password strings */
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.password-box input::placeholder {
+    color: #475569;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0px;
+}
+
+#togglePassword {
+    width: 55px;
+    padding: 0;
+    background: transparent;
+    color: #64748b;
+    font-size: 18px;
+    border-radius: 0;
+}
+
+#togglePassword:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #f8fafc;
+}
+
+.copy-btn {
+    background: #059669;
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.2);
+}
+
+.copy-btn:hover {
+    background: #10b981;
+    box-shadow: 0 6px 18px rgba(160, 245, 170, 0.3);
+}
+
+/* Password Strength Indicator Badges */
+.strength-text {
+    width: 100%;
+    padding: 12px;
+    text-align: center;
+    font-weight: 700;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.strength-text.weak {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.strength-text.medium {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.strength-text.strong {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}

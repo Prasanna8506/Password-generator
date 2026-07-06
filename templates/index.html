@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🔐 Password Generator</h1>
+    <p class="subtitle">
+        Create strong and secure passwords instantly.
+    </p>
+
+    <form action="/generate" method="POST">
+        <div class="input-group">
+            <label>Password Length</label>
+            <input
+                type="number"
+                name="length"
+                min="4"
+                max="64"
+                placeholder="e.g. 16"
+                value="{{ length }}"
+                required>
+        </div>
+
+        <div class="checkbox-group">
+            <h3>Character Types</h3>
+
+            <label class="checkbox">
+                <input
+                    type="checkbox"
+                    name="uppercase"
+                    {% if uppercase %}checked{% endif %}>
+                Uppercase Letters (A-Z)
+            </label>
+
+            <label class="checkbox">
+                <input
+                    type="checkbox"
+                    name="lowercase"
+                    {% if lowercase %}checked{% endif %}>
+                Lowercase Letters (a-z)
+            </label>
+
+            <label class="checkbox">
+                <input
+                    type="checkbox"
+                    name="numbers"
+                    {% if numbers %}checked{% endif %}>
+                Numbers (0-9)
+            </label>
+
+            <label class="checkbox">
+                <input
+                    type="checkbox"
+                    name="symbols"
+                    {% if symbols %}checked{% endif %}>
+                Special Characters (!@#$%^&*)
+            </label>
+        </div>
+
+        <button type="submit" class="generate-btn">Generate Password</button>
+    </form>
+
+    <div class="output">
+        <h3>Generated Password</h3>
+        <div class="password-box">
+            <input
+                type="text"
+                id="password"
+                value="{{ password }}"
+                placeholder="Your password will appear here"
+                readonly>
+            <button
+                type="button"
+                id="togglePassword"
+                onclick="togglePassword()">
+                🙈
+            </button>
+        </div>
+
+        <button
+            type="button"
+            class="copy-btn"
+            onclick="copyPassword()">
+            📋 Copy Password
+        </button>
+    </div>
+
+    {% if strength %}
+    <div class="strength">
+        <h3>Password Strength</h3>
+        <div class="strength-text {{ strength | lower }}">
+            {{ strength }}
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+    function copyPassword() {
+        const password = document.getElementById("password");
+
+        if (password.value === "" || password.value.includes("!")) {
+            alert("Generate a valid password first!");
+            return;
+        }
+
+        navigator.clipboard.writeText(password.value)
+            .then(() => {
+                const copyButton = document.querySelector(".copy-btn");
+                copyButton.innerHTML = "✅ Copied!";
+                setTimeout(() => {
+                    copyButton.innerHTML = "📋 Copy Password";
+                }, 2000);
+            })
+            .catch(() => {
+                alert("Failed to copy password.");
+            });
+    }
+
+    // FIX: Toggles correctly now that the initial field state is "text"
+    function togglePassword() {
+        const password = document.getElementById("password");
+        const button = document.getElementById("togglePassword");
+
+        if (password.type === "text") {
+            password.type = "password";
+            button.innerHTML = "👁";
+        } else {
+            password.type = "text";
+            button.innerHTML = "🙈";
+        }
+    }
+</script>
+
+</body>
+</html>
