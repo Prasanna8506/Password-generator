@@ -36,7 +36,8 @@ To launch the app and run a quick test on your local machine
 --- 
 
 ## Project File Structure 
-```├── static/
+```
+├── static/
 │   └── style.css       # Contains the neon dark theme & glassmorphism layout
 ├── templates/
 │   └── index.html      
