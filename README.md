@@ -20,4 +20,32 @@ Follow these steps to set up the environment and dependencies locally on your ma
 1. **Clone the Repository using**
    ``` bash 
    git clone https://github.com/Prasanna8506/Password-generator.git
-   
+
+---
+
+## How to Use (Demo)
+To launch the app and run a quick test on your local machine
+1. **Start the local server :**
+   ```bash
+   python app.py
+
+2. It will give the local http link open it your preferred browser
+   ```bash
+   http://127.x.x.x:xxxx/
+
+--- 
+
+## Project File Structure 
+├── static/
+│   └── style.css       # Contains the neon dark theme & glassmorphism layout
+├── templates/
+│   └── index.html      
+├── .gitignore         
+├── app.py              # Main Python Flask backend routing and core logic
+├── README.md           # Documentation file
+└── requirements.txt    # Lists all essential Python library dependencies
+
+---
+
+## Author
+* **Prasanna Kulkarni** 
