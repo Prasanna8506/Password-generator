@@ -46,7 +46,6 @@ To launch the app and run a quick test on your local machine
 ├── README.md           # Documentation file
 └── requirements.txt    # Lists all essential Python library dependencies
 
----
 
 ## Author
 * **Prasanna Kulkarni** 
